@@ -12,11 +12,17 @@
 /** Adds notification to queue with given parameters. */
 + (void) enqueueNotificationWithTitle:(NSString*)title
                               message:(NSString*)message
+                            iconImage:(NSString*)iconImage
                            tapHandler:(JCNotificationBannerTapHandlingBlock)tapHandler;
 
 - (void) enqueueNotificationWithTitle:(NSString*)title
                               message:(NSString*)message
                            tapHandler:(JCNotificationBannerTapHandlingBlock)tapHandler;
+
+//+ (void) enqueueNotificationWithTitle:(NSString*)title
+//                              message:(NSString*)message
+//                               iconImage:(UIImageView*)iconImage
+//                           tapHandler:(JCNotificationBannerTapHandlingBlock)tapHandler;
 
 - (void) enqueueNotification:(JCNotificationBanner*)notification;
 

@@ -97,10 +97,10 @@ const CGFloat kJCNotificationBannerViewMarginY = 5.0;
 
   currentY += 2.0;
   if (hasTitle) {
-    self.titleLabel.frame = CGRectMake(currentX, currentY, contentWidth, 22.0);
+    self.titleLabel.frame = CGRectMake(currentX+40.0, currentY, contentWidth, 22.0);
     currentY += 22.0;
   }
-  self.messageLabel.frame = CGRectMake(currentX, currentY, contentWidth, (self.frame.size.height - borderY) - currentY);
+  self.messageLabel.frame = CGRectMake(currentX+40.0, currentY+5.0, contentWidth-40.0   , (self.frame.size.height - borderY) - currentY);
   [self.messageLabel sizeToFit];
   CGRect messageFrame = self.messageLabel.frame;
   CGFloat spillY = (currentY + messageFrame.size.height + kJCNotificationBannerViewMarginY) - self.frame.size.height;
@@ -108,6 +108,9 @@ const CGFloat kJCNotificationBannerViewMarginY = 5.0;
     messageFrame.size.height -= spillY;
     self.messageLabel.frame = messageFrame;
   }
+    self.iconImageView.frame = CGRectMake(currentX, self.frame.size.height/2 - 15.0, 30.0, 30.0);
+    self.iconImageView.layer.cornerRadius = 15.0;
+    self.iconImageView.clipsToBounds = YES;
 }
 
 - (void) setNotificationBanner:(JCNotificationBanner*)notification {
@@ -115,6 +118,8 @@ const CGFloat kJCNotificationBannerViewMarginY = 5.0;
 
   self.titleLabel.text = notification.title;
   self.messageLabel.text = notification.message;
+  NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: notification.iconImage]];
+  self.iconImageView.image = [UIImage imageWithData:imageData];
 }
 
 - (void) handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {

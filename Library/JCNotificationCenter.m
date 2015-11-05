@@ -1,6 +1,5 @@
 #import "JCNotificationCenter.h"
 #import "JCNotificationBannerPresenter.h"
-#import "JCNotificationBannerPresenterIOSStyle.h"
 #import "JCNotificationBannerPresenterIOS7Style.h"
 #import "JCNotificationBannerWindow.h"
 #import "JCNotificationBannerPresenter_Private.h"
@@ -44,6 +43,7 @@
 /** Adds notification with iOS banner Style to queue with given parameters. */
 + (void) enqueueNotificationWithTitle:(NSString*)title
                               message:(NSString*)message
+                            iconImage:(NSString*)iconImage
                            tapHandler:(JCNotificationBannerTapHandlingBlock)tapHandler {
   JCNotificationBanner* notification = [[JCNotificationBanner alloc] initWithTitle:title
                                                                            message:message
@@ -61,6 +61,17 @@
                                         tapHandler:tapHandler];
   [self enqueueNotification:notification];
 }
+//
+//+ (void) enqueueNotificationWithTitle:(NSString*)title
+//                              message:(NSString*)message
+//                               iconImage:(UIImageView*)iconImage
+//                           tapHandler:(JCNotificationBannerTapHandlingBlock)tapHandler {
+//    JCNotificationBanner* notification = [[JCNotificationBanner alloc]
+//                                          initWithTitle:title
+//                                          message:message
+//                                          tapHandler:tapHandler];
+//    [[self sharedCenter] enqueueNotification:notification];
+//}
 
 - (void) enqueueNotification:(JCNotificationBanner*)notification {
   @synchronized(notificationQueueMutex) {
