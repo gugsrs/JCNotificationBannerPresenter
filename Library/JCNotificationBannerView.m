@@ -97,19 +97,20 @@ const CGFloat kJCNotificationBannerViewMarginY = 5.0;
 
   currentY += 2.0;
   if (hasTitle) {
-    self.titleLabel.frame = CGRectMake(currentX+40.0, currentY, contentWidth, 22.0);
+    self.titleLabel.frame = CGRectMake(currentX+50.0, currentY, contentWidth, 22.0);
     currentY += 22.0;
   }
-  self.messageLabel.frame = CGRectMake(currentX+40.0, currentY+5.0, contentWidth-40.0   , (self.frame.size.height - borderY) - currentY);
-  [self.messageLabel sizeToFit];
+    
+  self.messageLabel.frame = CGRectMake(currentX+50.0, currentY, contentWidth-60.0   , (self.frame.size.height - borderY) - currentY);
+    
   CGRect messageFrame = self.messageLabel.frame;
   CGFloat spillY = (currentY + messageFrame.size.height + kJCNotificationBannerViewMarginY) - self.frame.size.height;
-  if (spillY > 0.0) {
-    messageFrame.size.height -= spillY;
-    self.messageLabel.frame = messageFrame;
-  }
-    self.iconImageView.frame = CGRectMake(currentX, self.frame.size.height/2 - 15.0, 30.0, 30.0);
-    self.iconImageView.layer.cornerRadius = 15.0;
+//  if (spillY > 0.0) {
+//    messageFrame.size.height -= spillY;
+//    self.messageLabel.frame = messageFrame;
+//  }
+    self.iconImageView.frame = CGRectMake(currentX, self.frame.size.height/2 - 20.0, 40.0, 40.0);
+    self.iconImageView.layer.cornerRadius = 20.0;
     self.iconImageView.clipsToBounds = YES;
 }
 
