@@ -7,8 +7,9 @@
 
 - (id) init {
   if (self = [super init]) {
-    self.bannerMaxWidth = 350.0;
-    self.bannerHeight = 60.0;
+	CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    self.bannerMaxWidth = width;
+    self.bannerHeight = 64.0;
   }
   return self;
 }
